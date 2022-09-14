@@ -1,0 +1,44 @@
+html,
+body {
+    background-color: rgb(154, 61, 61);
+    text-decoration: underline;
+
+}
+
+#conteiner {
+    height: 100px;
+    display: block;
+}
+
+#conteiner h1 {
+    text-align: center;
+    margin-right: -4%;
+}
+
+#conteiner h1 p {
+    background-color: rgb(147, 24, 24);
+}
+
+#conteiner ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+#conteiner ul li {
+    height: 25px;
+}
+
+#conteiner ul li button {
+    border-radius: 5px;
+    background-color: rgb(169, 139, 139);
+    border: none;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#conteiner ul li button span {
+    position: relative;
+    transition: 0.5s;
+}

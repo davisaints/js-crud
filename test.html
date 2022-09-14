@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <title>Test</title>
+</head>
+
+<body>
+
+
+    <div id="conteiner">
+        <h1>
+            REST
+        </h1>
+
+        <ul>
+            <li><button onclick="getAllBlogEntries()" class="get">Getting All Blog Entries</button></li>
+
+            <li><button onclick="postBlogEntry()" class="post">Posting a Blog Entry</button></li>
+
+            <li><button onclick="getSingleBlogEntry()" class="get">Getting a Single Blog Entry</button></li>
+
+            <li><button onclick="deleteBlogEntry()" class="DELETE">Deleting a Blog Entry</button></li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        // Getting all blog entries 
+
+        function getAllBlogEntries() {
+            fetch('http://localhost:8080/o/headless-delivery/v1.0/sites/20121/blog-postings/', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('test@liferay.com:test')
+                }
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Posting a Blog Entry   
+
+        function postBlogEntry() {
+            fetch('http://localhost:8080/o/headless-delivery/v1.0/sites/20121/blog-postings/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + btoa('test@liferay.com:test')
+                },
+                body: JSON.stringify({
+                    "headline": "Test Blog Entry from REST Services",
+                    "articleBody": "This article was posted via REST services provided by Liferay DXP."
+                })
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Getting a Single Blog Entry
+
+        function getSingleBlogEntry() {
+
+            fetch('http://localhost:8080/o/headless-delivery/v1.0/blog-postings/40973', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('test@liferay.com:test')
+                }
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+        // Deleting a Blog Entry
+
+        function deleteBlogEntry() {
+            fetch('http://localhost:8080/o/headless-delivery/v1.0/blog-postings/40973', {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Basic ' + btoa('test@liferay.com:test')
+                }
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>
