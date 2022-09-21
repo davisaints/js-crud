@@ -1,0 +1,29 @@
+body {
+    background-color: brown;
+   
+}
+
+.content {
+    text-align: center;
+}
+
+.input[type=file] {
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: Teal;
+    color: #fff;
+    height: 30px;
+    width: 46px;
+}
+
+button {
+    background: #0066A2;
+    color: white;
+    border-style: outset;
+    border-color: #0066A2;
+    height: 50px;
+    width: 100px;
+    font: bold15px arial,sans-serif;
+    text-shadow: none;
+}
+

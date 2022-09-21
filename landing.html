@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <input type="file"> 
+        <button onclick="PostDocument()">Post a document</button>
+    </div>
+      
+   
+    <script>
+        function PostDocument() {
+            const doc = document.querySelector('input[type="file"]')
+            const formData = new FormData();
+            console.log(doc.files[0])
+            formData.append("file", doc.files[0])
+
+            fetch("http://localhost:8080/o/headless-delivery/v1.0/sites/20121/documents/", {
+                method: 'POST',
+                headers: {
+                    'Authorization': "Basic " + btoa('test@liferay.com:test')
+                },
+                body: formData
+
+            }).then((response) => response.json())
+                .then((data) => {
+                    console.log(JSON.stringify(data));
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        </script>
+</body>
+</html>
